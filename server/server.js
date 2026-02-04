@@ -18,6 +18,3 @@ app.get("/", (req, res)=>{
 app.get("/products", (req, res)=>{
     res.send("Server is ready, here are the products..")
 })
-
-// mongodb+srv://ayushg:ayush123@cluster0.kus7wdo.mongodb.net/?appName=Cluster0
-// this is connection string for mongo db cluster
