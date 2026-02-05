@@ -16,5 +16,6 @@ app.get("/", (req, res)=>{
 })
 
 app.get("/products", (req, res)=>{
+    
     res.send("Server is ready, here are the products..")
 })
