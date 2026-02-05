@@ -30,6 +30,7 @@ app.post("/api/products", async (req, res) => {
 
     if (!product.name || !product.price || !product.image) {
         return res.status(400).json({ success: false, message: "Please provide all fields" })
+        // if we don't send any response then client will just keep waiting for response stoping the application execution
     }
 
     const newProduct = new Product(product)
