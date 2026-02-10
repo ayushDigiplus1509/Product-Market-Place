@@ -1,14 +1,12 @@
 import express from 'express'
 import dotenv from "dotenv"
 import { connectionDB } from './config/db.js'
-import Product from './models/product.model.js'
-import mongoose from 'mongoose'
 import productRoutes from "./routes/product.route.js"
 
 
 const app = express()
 dotenv.config()
-
+const PORT = process.env.PORT || 5000
 
 app.use(express.json()) // this is middleware
 /*
@@ -24,9 +22,9 @@ app.get("/", (req, res) => {
     res.send("This is home page hello")
 })
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     connectionDB()
-    console.log("Server started at port 5000")
+    console.log(`Server started at port ${PORT}`)
 })
 
 
