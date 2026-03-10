@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 
 app.listen(PORT, () => {
     connectionDB()
-    console.log(`Server started at port ${PORT}`)
+    console.log(` Server started at port ${PORT}`)
 })
 
 
