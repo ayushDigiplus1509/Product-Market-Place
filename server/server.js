@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from "dotenv"
 import { connectionDB } from './config/db.js'
 import productRoutes from "./routes/product.route.js"
+import rateLimiter from './middleware/rateLimiter.js'
 
 
 const app = express()
@@ -15,7 +16,7 @@ app.use(express.json()) // this is middleware
 ➡️ Converts it into a JavaScript object
 ➡️ Attaches it to req.body
 */
-
+app.use(rateLimiter)
 app.use("/api/products", productRoutes) // this is custom middleware which will be used to handle all the routes related to products
 
 // rate limiting is a way to control how often someone can do something on a website or app like how many times they can refresh a page, 
