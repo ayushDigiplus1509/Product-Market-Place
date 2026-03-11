@@ -9,7 +9,6 @@ const rateLimiter = async (req, res, next) => {
         const {success} = await ratelimit.limit(ip) // this will limit the requests based on the ip address of the user
         if (!success) {
             return res.status(429).json({ message: "Too many requests, please try again later." })
-
         }
         next()
         }
