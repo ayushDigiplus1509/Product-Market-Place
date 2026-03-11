@@ -3,7 +3,10 @@ import ratelimit from "../config/upstash.js"
 const rateLimiter = async (req, res, next) => {
 
     try {
-        const {success} = await ratelimit.limit("my-limit-key")
+        const ip =req.headers["x-forwarded-for"]?.split(",")[0] ||req.socket.remoteAddress ||"anonymous";
+        /* this will get the ip address of the user, if the user is behind a proxy then it will get the ip address from the x-forwarded-for header, 
+        if not then it will get the ip address from the socket, if both are not available then it will return anonymous */
+        const {success} = await ratelimit.limit(ip) // this will limit the requests based on the ip address of the user
         if (!success) {
             return res.status(429).json({ message: "Too many requests, please try again later." })
 

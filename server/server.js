@@ -26,9 +26,15 @@ app.get("/", (req, res) => {
     res.send("This is home page hello")
 })
 
-app.listen(PORT, () => {
-    connectionDB()
-    console.log(` Server started at port ${PORT}`)
+connectionDB().then(() => {
+    console.log("Connected to database")
+    app.listen(PORT, () => {
+        connectionDB()
+        console.log(` Server started at port ${PORT}`)
+    })
+
+}).catch((error) => {
+    console.error("Error connecting to database:", error)
 })
 
 
